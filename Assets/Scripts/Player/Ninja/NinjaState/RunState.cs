@@ -38,6 +38,10 @@ public class RunState : NinjaState
         {
             ninja.GetHurt();
         }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            ninja.ChangeState(new DieState(ninja));
+        }
     }
 
     public override void Exit()
