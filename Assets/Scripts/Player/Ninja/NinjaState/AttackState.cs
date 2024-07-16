@@ -9,7 +9,7 @@ public class AttackState : NinjaState
     public override void Enter()
     {
         ninja.animator.SetTrigger("Attack");
-        // Optionally stop horizontal movement during attack
+        //stop horizontal movement during attack
         ninja.rb.velocity = new Vector2(0, ninja.rb.velocity.y);
     }
 
