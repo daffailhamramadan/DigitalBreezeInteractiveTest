@@ -30,7 +30,7 @@ public class RunState : NinjaState
             ninja.ChangeState(new IdleState(ninja));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && ninja.IsGrounded())
         {
             ninja.ChangeState(new JumpState(ninja));
         }
@@ -41,5 +41,4 @@ public class RunState : NinjaState
         ninja.animator.ResetTrigger("Run");
     }
 }
-
 

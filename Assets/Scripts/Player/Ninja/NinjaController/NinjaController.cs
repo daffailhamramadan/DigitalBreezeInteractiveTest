@@ -8,6 +8,10 @@ public class NinjaController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
+    public float jumpForce = 10f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float groundCheckRadius = 0.2f;
 
     private NinjaState currentState;
 
@@ -42,7 +46,7 @@ public class NinjaController : MonoBehaviour
 
     public bool IsGrounded()
     {
-        // Implement ground check logic
-        return true;
+        // Check if the character is grounded
+        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 }

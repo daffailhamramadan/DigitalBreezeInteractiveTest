@@ -20,7 +20,7 @@ public class IdleState : NinjaState
             // Transition to RunState when there is horizontal input
             ninja.ChangeState(new RunState(ninja));
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space) && ninja.IsGrounded())
         {
             ninja.ChangeState(new JumpState(ninja));
         }
