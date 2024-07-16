@@ -17,22 +17,26 @@ public class RunState : NinjaState
 
         if (horizontalInput != 0)
         {
-            // Flip the sprite based on the direction of input
             ninja.spriteRenderer.flipX = horizontalInput < 0;
-
-            // Move the character using Rigidbody2D
             Vector2 movement = new Vector2(horizontalInput * ninja.moveSpeed, ninja.rb.velocity.y);
             ninja.rb.velocity = movement;
         }
         else
         {
-            // Transition back to IdleState when there is no horizontal input
             ninja.ChangeState(new IdleState(ninja));
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && ninja.IsGrounded())
         {
             ninja.ChangeState(new JumpState(ninja));
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            ninja.ChangeState(new AttackState(ninja));
+        }
+        else if (Input.GetKeyDown(KeyCode.H)) // Press 'H' key to simulate getting hurt
+        {
+            ninja.GetHurt();
         }
     }
 

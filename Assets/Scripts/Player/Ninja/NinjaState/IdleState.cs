@@ -17,12 +17,19 @@ public class IdleState : NinjaState
 
         if (horizontalInput != 0)
         {
-            // Transition to RunState when there is horizontal input
             ninja.ChangeState(new RunState(ninja));
         }
         else if (Input.GetKeyDown(KeyCode.Space) && ninja.IsGrounded())
         {
             ninja.ChangeState(new JumpState(ninja));
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            ninja.ChangeState(new AttackState(ninja));
+        }
+        else if (Input.GetKeyDown(KeyCode.H)) // Press 'H' key to simulate getting hurt
+        {
+            ninja.GetHurt();
         }
     }
 

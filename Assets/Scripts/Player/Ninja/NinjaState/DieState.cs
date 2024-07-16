@@ -9,16 +9,17 @@ public class DieState : NinjaState
     public override void Enter()
     {
         ninja.animator.SetTrigger("Die");
+        ninja.rb.velocity = Vector2.zero; // Stop all movement
     }
 
     public override void Update()
     {
-        // No transition out of DieState
+        // No updates needed as the character is dead
     }
 
     public override void Exit()
     {
-        // Any cleanup for leaving the state
+        // Reset any changes made during Enter (if necessary)
+        ninja.animator.ResetTrigger("Die");
     }
 }
-
